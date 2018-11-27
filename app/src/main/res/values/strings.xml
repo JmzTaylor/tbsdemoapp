@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TBSDemoApp</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name…</string>
+    <string name="salary">Salary: \$%1$d</string>
+    <string name="age">Age: %1$d years</string>
+    <string name="name">Name: %1$s</string>
+    <string name="id">ID: %1$d</string>
+    <string name="profileImg">Profile Image</string>
+</resources>
