@@ -3,6 +3,7 @@ package com.jmzsoft.tbsdemoapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     private Context context;
     private ArrayList<Employees> employees;
     private ArrayList<Employees> employeeListFiltered;
+    private int selectedPos = RecyclerView.NO_POSITION;
 
     EmployeeAdapter(Context context, ArrayList<Employees> employees) {
         this.context = context;
@@ -52,6 +54,21 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     @SuppressLint("StringFormatInvalid")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        if(selectedPos==position) {
+            holder.itemView.setBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
+
+        } else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#FEFEFE"));
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedPos = position;
+                notifyDataSetChanged();
+            }
+        });
+
         final Employees employee = employeeListFiltered.get(position);
         Resources res = context.getResources();
         holder.tvId.setText(res.getString(R.string.id, employee.getId()));
